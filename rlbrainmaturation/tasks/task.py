@@ -1,6 +1,6 @@
 from __future__ import annotations
 from typing import Dict, List, Union, Tuple
-from utils.general_utils import Coordinates
+from ..utils.general_utils import Coordinates
 import numpy as np
 
 

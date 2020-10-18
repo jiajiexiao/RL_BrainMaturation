@@ -1,8 +1,8 @@
-from tasks.task import Task, Instruction
-from tasks.odr import ODR
-from tasks.gap import Gap
-from tasks.odr_distract import ODRDistract
-from envs.environment import Environment
+from rlbrainmaturation.tasks.task import Task, Instruction
+from rlbrainmaturation.tasks.odr import ODR
+from rlbrainmaturation.tasks.gap import Gap
+from rlbrainmaturation.tasks.odr_distract import ODRDistract
+from rlbrainmaturation.envs.environment import Environment
 
 import ray
 from ray.rllib.agents.ppo import PPOTrainer

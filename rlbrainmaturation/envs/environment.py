@@ -2,7 +2,7 @@ from __future__ import annotations
 import numpy as np
 import gym
 from gym import spaces
-from tasks.task import Task
+from rlbrainmaturation.tasks.task import Task
 from typing import List, Tuple, Dict
 
 
