@@ -1,16 +1,16 @@
 from __future__ import annotations
 from typing import Dict, List, Tuple, Union
-from tasks.task import Task, Instruction
+from rlbrainmaturation.tasks.task import Task, Instruction
 import numpy as np
-from utils.general_utils import Coordinates
+from rlbrainmaturation.utils.general_utils import Coordinates
 
 
-class ODRRandom(Task):
-    """ODRRadom task class, which is a variant of ODR task with noisy signal before saccade.
-    ODRRadom task operates in the following 4 steps:
+class ODR(Task):
+    """ODR task class.
+    ODR task operates in the following 4 steps:
     1. fixation
     2. fixation + cue signal
-    3. fixation + random signal
+    3. fixation
     4. no signal and expect to observe saccade toward the cue signal in step 2
     """
 
@@ -37,17 +37,13 @@ class ODRRandom(Task):
                 When encourage_mode is false, a sparse reward of 1 is only returned when the distance is smaller than epsilon. 
         """
 
-        instructions = {
+        instructions: Dict[int, List[Instruction]] = {
             0: [Instruction(time=0, x=5, y=5)],  # fixation
             1: [
-                Instruction(time=1, x=5, y=5),
+                Instruction(time=1, x=5, y=5),  # fixation
                 Instruction(time=1, x=target_x, y=target_y),
-            ],  # fixation + cue
-            2: [
-                Instruction(
-                    time=2, x=width, y=height, rng=np.random.default_rng()
-                )
-            ],  # random signal
+            ],  # cue
+            2: [Instruction(time=2, x=5, y=5)],  # fixation
         }
 
         super().__init__(
